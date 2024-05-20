@@ -21,7 +21,12 @@ class TextStyles {
 
   static TextStyle warna = const TextStyle(
       fontFamily: 'Schyler',
-      fontWeight: FontWeight.normal,
+      fontWeight: FontWeight.w500,
       fontSize: 16.0,
+      color: AppColors.hijauGelap);
+  static TextStyle titleForm = const TextStyle(
+      fontFamily: 'Schyler',
+      fontWeight: FontWeight.w500,
+      fontSize: 28.0,
       color: AppColors.hijauGelap);
 }

@@ -3,16 +3,17 @@ import 'package:flutter/widgets.dart';
 import 'package:project_uas/style.dart';
 import 'package:project_uas/widget/custom_textfield.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class RegisterScreen extends StatefulWidget {
+  const RegisterScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<RegisterScreen> createState() => _RegisterScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _RegisterScreenState extends State<RegisterScreen> {
   final emailController = TextEditingController();
   final paswordControler = TextEditingController();
+  final namaControler = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   bool isObscure = true;
 
@@ -21,7 +22,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.hijauGelap,
-        title: Text('Login', style: TextStyles.title),
+        title: Text('Register', style: TextStyles.title),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -51,7 +52,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   height: 24.0,
                 ),
                 Text(
-                  'Masuk',
+                  'Buat Akun',
                   style: TextStyles.titleForm,
                 ),
                 const SizedBox(
@@ -62,10 +63,28 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: Column(
                       children: [
                         CustomTextField(
+                          controller: namaControler,
+                          textInputType: TextInputType.name,
+                          textInputAction: TextInputAction.next,
+                          hint: 'Nama Lengkap',
+                        ),
+                        const SizedBox(
+                          height: 16.0,
+                        ),
+                        CustomTextField(
                             controller: emailController,
                             textInputType: TextInputType.emailAddress,
                             textInputAction: TextInputAction.next,
                             hint: 'Username,Email,No.telp'),
+                        const SizedBox(
+                          height: 16.0,
+                        ),
+                        CustomTextField(
+                          controller: namaControler,
+                          textInputType: TextInputType.name,
+                          textInputAction: TextInputAction.next,
+                          hint: 'Tanggal Lahir',
+                        ),
                         const SizedBox(
                           height: 16.0,
                         ),
@@ -81,7 +100,23 @@ class _LoginScreenState extends State<LoginScreen> {
                               isObscure = !isObscure;
                             });
                           },
-                        )
+                        ),
+                        const SizedBox(
+                          height: 16.0,
+                        ),
+                        CustomTextField(
+                          controller: paswordControler,
+                          textInputType: TextInputType.visiblePassword,
+                          textInputAction: TextInputAction.done,
+                          hint: 'Ulangi Password',
+                          isObscure: isObscure,
+                          haSuffix: true,
+                          onPressed: () {
+                            setState(() {
+                              isObscure = !isObscure;
+                            });
+                          },
+                        ),
                       ],
                     )),
                 const SizedBox(
