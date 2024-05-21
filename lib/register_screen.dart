@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:project_uas/login_screen.dart';
 import 'package:project_uas/style.dart';
 import 'package:project_uas/widget/custom_textfield.dart';
 
@@ -15,6 +16,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final paswordControler = TextEditingController();
   final namaControler = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+  final TextEditingController birthDateController = TextEditingController();
   bool isObscure = true;
 
   @override
@@ -44,7 +46,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   child: Divider(thickness: 3, color: AppColors.hijauGelap),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(top: 8, left: 32),
+                  padding: EdgeInsets.only(top: 1, left: 32),
                   child: Text('Atur Jadwal Minum Obat\nHanya Dalam Genggaman',
                       style: TextStyles.warna),
                 ),
@@ -63,6 +65,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     child: Column(
                       children: [
                         CustomTextField(
+                          icon: Icons.person,
                           controller: namaControler,
                           textInputType: TextInputType.name,
                           textInputAction: TextInputAction.next,
@@ -72,18 +75,22 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           height: 16.0,
                         ),
                         CustomTextField(
-                            controller: emailController,
-                            textInputType: TextInputType.emailAddress,
-                            textInputAction: TextInputAction.next,
-                            hint: 'Username,Email,No.telp'),
+                          icon: Icons.person,
+                          controller: emailController,
+                          textInputType: TextInputType.emailAddress,
+                          textInputAction: TextInputAction.next,
+                          hint: 'Username,Email,No.telp',
+                        ),
                         const SizedBox(
                           height: 16.0,
                         ),
                         CustomTextField(
-                          controller: namaControler,
-                          textInputType: TextInputType.name,
+                          controller: birthDateController,
+                          textInputType: TextInputType.datetime,
                           textInputAction: TextInputAction.next,
                           hint: 'Tanggal Lahir',
+                          isDateField: true,
+                          icon: Icons.calendar_today,
                         ),
                         const SizedBox(
                           height: 16.0,
@@ -130,13 +137,18 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ),
                 ElevatedButton(
                     style: raisedButtonStyle,
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => LoginScreen()));
+                    },
                     child: SizedBox(
                       width: 320,
                       child: Padding(
                         padding: const EdgeInsets.symmetric(vertical: 16.0),
                         child: Text(
-                          'Login',
+                          'Register',
                           textAlign: TextAlign.center,
                           style: TextStyles.title.copyWith(
                             fontSize: 20.0,
@@ -146,22 +158,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                     )),
                 const SizedBox(
-                  height: 24.0,
-                ),
-                Text(
-                  'Belum ada akun ?',
-                  style: TextStyles.body
-                      .copyWith(fontSize: 18.0)
-                      .copyWith(color: AppColors.hijauGelap),
-                  textAlign: TextAlign.center,
-                ),
-                Text(
-                  'Daftar',
-                  style: TextStyles.body.copyWith(
-                    fontSize: 18.0,
-                    color: AppColors.darkBlue,
-                  ),
-                  textAlign: TextAlign.center,
+                  height: 6.0,
                 ),
               ],
             ),

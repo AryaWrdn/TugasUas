@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:project_uas/style.dart';
+import 'package:intl/intl.dart';
 
-class CustomTextField extends StatelessWidget {
+class CustomTextField extends StatefulWidget {
   const CustomTextField({
     required this.controller,
     required this.textInputType,
@@ -10,6 +11,8 @@ class CustomTextField extends StatelessWidget {
     this.isObscure = false,
     this.haSuffix = false,
     this.onPressed,
+    this.icon,
+    this.isDateField = false,
     super.key,
   });
 
@@ -20,24 +23,33 @@ class CustomTextField extends StatelessWidget {
   final bool isObscure;
   final bool haSuffix;
   final VoidCallback? onPressed;
+  final IconData? icon;
+  final bool isDateField;
 
+  @override
+  State<CustomTextField> createState() => _CustomTextFieldState();
+}
+
+class _CustomTextFieldState extends State<CustomTextField> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 42,
       child: TextField(
         textAlignVertical: TextAlignVertical.bottom,
-        controller: controller,
+        controller: widget.controller,
         style: TextStyles.body,
-        keyboardType: textInputType,
-        textInputAction: textInputAction,
-        obscureText: isObscure,
+        keyboardType:
+            widget.isDateField ? TextInputType.none : widget.textInputType,
+        textInputAction: widget.textInputAction,
+        obscureText: widget.isObscure,
         decoration: InputDecoration(
-          suffixIcon: haSuffix
+          suffixIcon: widget.haSuffix
               ? IconButton(
-                  onPressed: onPressed,
-                  icon:
-                      Icon(isObscure ? Icons.visibility : Icons.visibility_off))
+                  onPressed: widget.onPressed,
+                  icon: Icon(widget.isObscure
+                      ? Icons.visibility
+                      : Icons.visibility_off))
               : null,
           enabledBorder: OutlineInputBorder(
               borderSide: const BorderSide(
@@ -51,10 +63,27 @@ class CustomTextField extends StatelessWidget {
                 color: AppColors.darkGrey,
               ),
               borderRadius: BorderRadius.circular(10.0)),
-          hintText: hint,
+          hintText: widget.hint,
           hintStyle: TextStyles.body,
         ),
+        onTap: widget.isDateField ? () => _selectDate(context) : null,
       ),
     );
+  }
+
+  Future<void> _selectDate(BuildContext context) async {
+    DateTime? pickedDate = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(1900),
+      lastDate: DateTime.now(),
+    );
+
+    if (pickedDate != null) {
+      String formattedDate = DateFormat('yyyy-MM-dd').format(pickedDate);
+      setState(() {
+        widget.controller.text = formattedDate;
+      });
+    }
   }
 }
