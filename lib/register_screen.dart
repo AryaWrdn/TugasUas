@@ -14,6 +14,7 @@ class RegisterScreen extends StatefulWidget {
 class _RegisterScreenState extends State<RegisterScreen> {
   final emailController = TextEditingController();
   final paswordControler = TextEditingController();
+  final reaswordControler = TextEditingController();
   final namaControler = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   final TextEditingController birthDateController = TextEditingController();
@@ -41,12 +42,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     width: 182.0,
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 32, top: 7),
+                const Padding(
+                  padding: EdgeInsets.only(left: 32, top: 7),
                   child: Divider(thickness: 3, color: AppColors.hijauGelap),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(top: 1, left: 32),
+                  padding: const EdgeInsets.only(top: 1, left: 32),
                   child: Text('Atur Jadwal Minum Obat\nHanya Dalam Genggaman',
                       style: TextStyles.warna),
                 ),
@@ -85,18 +86,18 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           height: 16.0,
                         ),
                         CustomTextField(
+                          icon: Icons.calendar_month,
                           controller: birthDateController,
                           textInputType: TextInputType.datetime,
                           textInputAction: TextInputAction.next,
                           hint: 'Tanggal Lahir',
                           isDateField: true,
-                          icon: Icons.calendar_today,
                         ),
                         const SizedBox(
                           height: 16.0,
                         ),
                         CustomTextField(
-                          controller: paswordControler,
+                          controller: reaswordControler,
                           textInputType: TextInputType.visiblePassword,
                           textInputAction: TextInputAction.done,
                           hint: 'Password',
@@ -141,7 +142,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => LoginScreen()));
+                              builder: (context) => const LoginScreen()));
                     },
                     child: SizedBox(
                       width: 320,

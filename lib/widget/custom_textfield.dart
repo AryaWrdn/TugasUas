@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:project_uas/style.dart';
 import 'package:intl/intl.dart';
 
@@ -9,7 +10,7 @@ class CustomTextField extends StatefulWidget {
     required this.textInputAction,
     required this.hint,
     this.isObscure = false,
-    this.haSuffix = false,
+    this.haSuffix = true,
     this.onPressed,
     this.icon,
     this.isDateField = false,
@@ -44,12 +45,14 @@ class _CustomTextFieldState extends State<CustomTextField> {
         textInputAction: widget.textInputAction,
         obscureText: widget.isObscure,
         decoration: InputDecoration(
-          suffixIcon: widget.haSuffix
+          prefixIcon: widget.haSuffix
               ? IconButton(
                   onPressed: widget.onPressed,
-                  icon: Icon(widget.isObscure
-                      ? Icons.visibility
-                      : Icons.visibility_off))
+                  icon: Icon(widget.icon ??
+                      (widget.isObscure
+                          ? Icons.visibility
+                          : Icons.visibility_off)),
+                )
               : null,
           enabledBorder: OutlineInputBorder(
               borderSide: const BorderSide(

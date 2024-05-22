@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:project_uas/home_screen.dart';
+import 'package:project_uas/register_screen.dart';
 import 'package:project_uas/style.dart';
 import 'package:project_uas/widget/custom_textfield.dart';
 
@@ -38,12 +40,12 @@ class _LoginScreenState extends State<LoginScreen> {
                     width: 182.0,
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 32, top: 7),
+                const Padding(
+                  padding: EdgeInsets.only(left: 32, top: 7),
                   child: Divider(thickness: 3, color: AppColors.hijauGelap),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(top: 8, left: 32),
+                  padding: const EdgeInsets.only(top: 8, left: 32),
                   child: Text('Atur Jadwal Minum Obat\nHanya Dalam Genggaman',
                       style: TextStyles.warna),
                 ),
@@ -62,10 +64,13 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: Column(
                       children: [
                         CustomTextField(
-                            controller: emailController,
-                            textInputType: TextInputType.emailAddress,
-                            textInputAction: TextInputAction.next,
-                            hint: 'Username,Email,No.telp'),
+                          controller: emailController,
+                          textInputType: TextInputType.emailAddress,
+                          textInputAction: TextInputAction.next,
+                          hint: 'Username,Email,No.telp',
+                          haSuffix: true,
+                          icon: Icons.person,
+                        ),
                         const SizedBox(
                           height: 16.0,
                         ),
@@ -95,7 +100,12 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 ElevatedButton(
                     style: raisedButtonStyle,
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const HomeScreen()));
+                    },
                     child: SizedBox(
                       width: 320,
                       child: Padding(
@@ -111,7 +121,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     )),
                 const SizedBox(
-                  height: 24.0,
+                  height: 6.0,
                 ),
                 Text(
                   'Belum ada akun ?',
@@ -120,13 +130,33 @@ class _LoginScreenState extends State<LoginScreen> {
                       .copyWith(color: AppColors.hijauGelap),
                   textAlign: TextAlign.center,
                 ),
-                Text(
-                  'Daftar',
-                  style: TextStyles.body.copyWith(
-                    fontSize: 18.0,
-                    color: AppColors.darkBlue,
-                  ),
-                  textAlign: TextAlign.center,
+                const SizedBox(
+                  height: 6.0,
+                ),
+                ElevatedButton(
+                    style: raisedButtonStyle,
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const RegisterScreen()));
+                    },
+                    child: SizedBox(
+                      width: 320,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 16.0),
+                        child: Text(
+                          'Register',
+                          textAlign: TextAlign.center,
+                          style: TextStyles.title.copyWith(
+                            fontSize: 20.0,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    )),
+                const SizedBox(
+                  height: 6.0,
                 ),
               ],
             ),
