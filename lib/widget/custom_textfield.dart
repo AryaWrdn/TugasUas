@@ -50,8 +50,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
                   onPressed: widget.onPressed,
                   icon: Icon(widget.icon ??
                       (widget.isObscure
-                          ? Icons.visibility
-                          : Icons.visibility_off)),
+                          ? Icons.visibility_off
+                          : Icons.visibility)),
                 )
               : null,
           enabledBorder: OutlineInputBorder(
