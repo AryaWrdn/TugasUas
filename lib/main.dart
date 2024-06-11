@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:project_uas/login_screen.dart';
+import 'package:Pharalert/login_screen.dart';
 
 void main() {
   runApp(const MyApp());

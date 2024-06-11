@@ -1,24 +1,88 @@
 import 'package:flutter/material.dart';
-import 'package:project_uas/style.dart';
+import 'package:Pharalert/style.dart';
+import 'package:Pharalert/detail_obat.dart';
 
-class Beranda extends StatefulWidget {
+class Beranda extends StatelessWidget {
   const Beranda({Key? key}) : super(key: key);
 
   @override
-  _BerandaState createState() => _BerandaState();
-}
-
-class _BerandaState extends State<Beranda> {
-  String _editedMedicineName = 'Parasetamol 500mg'; // Default value
-
-  void updateEditedMedicineName(Map<String, dynamic> editedMedicine) {
-    setState(() {
-      _editedMedicineName = editedMedicine['name'];
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
+    final List<Map<String, String>> medicines = [
+      {
+        'name': 'Parasetamol',
+        'description':
+            'Parasetamol adalah obat yang digunakan untuk meredakan nyeri dan menurunkan demam.',
+        'image': 'assets/images/parasetamol.jpg',
+      },
+      {
+        'name': 'Ibuprofen',
+        'description':
+            'Ibuprofen digunakan untuk meredakan nyeri dan inflamasi.',
+        'image': 'assets/images/parasetamol.jpg',
+      },
+      {
+        'name': 'Amoxicillin',
+        'description':
+            'Amoxicillin adalah antibiotik untuk mengobati berbagai infeksi bakteri.',
+        'image': 'assets/images/parasetamol.jpg',
+      },
+      {
+        'name': 'Parasetamol',
+        'description':
+            'Parasetamol adalah obat yang digunakan untuk meredakan nyeri dan menurunkan demam.',
+        'image': 'assets/images/parasetamol.jpg',
+      },
+      {
+        'name': 'Ibuprofen',
+        'description':
+            'Ibuprofen digunakan untuk meredakan nyeri dan inflamasi.',
+        'image': 'assets/images/parasetamol.jpg',
+      },
+      {
+        'name': 'Amoxicillin',
+        'description':
+            'Amoxicillin adalah antibiotik untuk mengobati berbagai infeksi bakteri.',
+        'image': 'assets/images/parasetamol.jpg',
+      },
+      {
+        'name': 'Parasetamol',
+        'description':
+            'Parasetamol adalah obat yang digunakan untuk meredakan nyeri dan menurunkan demam.',
+        'image': 'assets/images/parasetamol.jpg',
+      },
+      {
+        'name': 'Ibuprofen',
+        'description':
+            'Ibuprofen digunakan untuk meredakan nyeri dan inflamasi.',
+        'image': 'assets/images/parasetamol.jpg',
+      },
+      {
+        'name': 'Amoxicillin',
+        'description':
+            'Amoxicillin adalah antibiotik untuk mengobati berbagai infeksi bakteri.',
+        'image': 'assets/images/parasetamol.jpg',
+      },
+      {
+        'name': 'Parasetamol',
+        'description':
+            'Parasetamol adalah obat yang digunakan untuk meredakan nyeri dan menurunkan demam.',
+        'image': 'assets/images/parasetamol.jpg',
+      },
+      {
+        'name': 'Ibuprofen',
+        'description':
+            'Ibuprofen digunakan untuk meredakan nyeri dan inflamasi.',
+        'image': 'assets/images/parasetamol.jpg',
+      },
+      {
+        'name': 'Amoxicillin',
+        'description':
+            'Amoxicillin adalah antibiotik untuk mengobati berbagai infeksi bakteri.',
+        'image': 'assets/images/parasetamol.jpg',
+      },
+      // Tambahkan lebih banyak data sesuai kebutuhan
+    ];
+
     return Scaffold(
       body: SafeArea(
         child: Stack(
@@ -66,7 +130,7 @@ class _BerandaState extends State<Beranda> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Jadwal Minum Obat",
+                    "Jenis-Jenis Obat ",
                     style: TextStyles.titleForm,
                   ),
                   SizedBox(
@@ -75,65 +139,102 @@ class _BerandaState extends State<Beranda> {
                     child: const Divider(
                         thickness: 2, color: AppColors.hijauGelap),
                   ),
-                  Column(
-                    children: [
-                      SizedBox(
-                        height: 80,
-                        width: double.infinity,
-                        child: Card(
-                          color: AppColors.hijauGelap,
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: <Widget>[
-                              ListTile(
-                                title: Text(
-                                  _editedMedicineName, // Menampilkan nama obat yang diedit
-                                  style: TextStyles.title
-                                      .copyWith(color: AppColors.putihCerah),
-                                ),
-                                trailing: const Icon(
-                                  Icons.settings,
-                                  color: AppColors.putihCerah,
-                                ),
-                                subtitle: Text('Atur profil Anda',
-                                    style: TextStyles.body
-                                        .copyWith(color: AppColors.putihCerah)),
+                  const SizedBox(
+                    height: 18,
+                  ),
+                  Expanded(
+                    child: ListView.builder(
+                      itemCount: medicines.length,
+                      itemBuilder: (context, index) {
+                        final medicine = medicines[index];
+                        final description = medicine['description']!;
+                        final name = medicine['name']!;
+                        return SizedBox(
+                          height: 100,
+                          width: double.infinity,
+                          child: Card(
+                            color: AppColors.hijauGelap,
+                            child: ListTile(
+                              title: Text(
+                                name,
+                                style: TextStyles.title
+                                    .copyWith(color: AppColors.putihCerah),
                               ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 80,
-                        width: double.infinity,
-                        child: Card(
-                          color: AppColors.hijauGelap,
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: <Widget>[
-                              ListTile(
-                                trailing: const Icon(
-                                  Icons.security,
-                                  color: AppColors.putihCerah,
-                                ),
-                                title: Text(
-                                  'Keamanan',
-                                  style: TextStyles.title
-                                      .copyWith(color: AppColors.putihCerah),
-                                ),
-                                subtitle: Text('Pengaturan keamanan',
-                                    style: TextStyles.body
-                                        .copyWith(color: AppColors.putihCerah)),
+                              subtitle: description.length > 50
+                                  ? Row(
+                                      children: [
+                                        TextButton(
+                                          onPressed: () {
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                    DetailObat(
+                                                  name: name,
+                                                  description: description,
+                                                  image: medicine['image']!,
+                                                ),
+                                              ),
+                                            );
+                                          },
+                                          child: const Text(
+                                            'Baca Info',
+                                            style: TextStyle(
+                                              color: AppColors.darkBlue,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                        ),
+                                        SizedBox(
+                                            width:
+                                                50), // Jarak antara teks "Baca Info" dengan deskripsi
+                                        Expanded(
+                                          child: Text(
+                                            description,
+                                            style: TextStyles.body.copyWith(
+                                                color: AppColors.putihCerah),
+                                            maxLines: 2,
+                                            overflow: TextOverflow.ellipsis,
+                                          ),
+                                        ),
+                                      ],
+                                    )
+                                  : Text(
+                                      description,
+                                      style: TextStyles.body.copyWith(
+                                          color: AppColors.putihCerah),
+                                      maxLines: 2,
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                              trailing: Image.asset(
+                                medicine['image']!,
+                                height: 40,
+                                width: 40,
+                                fit: BoxFit.cover,
                               ),
-                            ],
+                              onTap: () {
+                                if (description.length <= 100) {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => DetailObat(
+                                        name: name,
+                                        description: description,
+                                        image: medicine['image']!,
+                                      ),
+                                    ),
+                                  );
+                                }
+                              },
+                            ),
                           ),
-                        ),
-                      ),
-                    ],
-                  )
+                        );
+                      },
+                    ),
+                  ),
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:project_uas/login_screen.dart';
-import 'package:project_uas/style.dart';
-import 'package:project_uas/widget/custom_textfield.dart';
+import 'package:Pharalert/login_screen.dart';
+import 'package:Pharalert/style.dart';
+import 'package:Pharalert/widget/custom_textfield.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -14,7 +14,6 @@ class RegisterScreen extends StatefulWidget {
 class _RegisterScreenState extends State<RegisterScreen> {
   final emailController = TextEditingController();
   final paswordControler = TextEditingController();
-  final reaswordControler = TextEditingController();
   final namaControler = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   final TextEditingController birthDateController = TextEditingController();
@@ -90,22 +89,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       textInputAction: TextInputAction.next,
                       hint: 'Tanggal Lahir',
                       isDateField: true,
-                    ),
-                    const SizedBox(
-                      height: 16.0,
-                    ),
-                    CustomTextField(
-                      controller: reaswordControler,
-                      textInputType: TextInputType.visiblePassword,
-                      textInputAction: TextInputAction.done,
-                      hint: 'Password',
-                      isObscure: isObscure,
-                      haSuffix: true,
-                      onPressed: () {
-                        setState(() {
-                          isObscure = !isObscure;
-                        });
-                      },
                     ),
                     const SizedBox(
                       height: 16.0,

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:project_uas/style.dart';
+import 'package:Pharalert/style.dart';
 import 'package:flutter/widgets.dart';
 
 class Setting extends StatelessWidget {
@@ -36,7 +36,7 @@ class Setting extends StatelessWidget {
                         alignment: Alignment.centerLeft,
                         width: 150,
                         height: 140,
-                        child: Text("Selamat\nDatang",
+                        child: Text("Setting",
                             style: TextStyles.titleApp
                                 .copyWith(color: AppColors.putihCerah)),
                       ),

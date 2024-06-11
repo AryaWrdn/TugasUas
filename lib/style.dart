@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class AppColors {
   static const darkGrey = Color(0xFF635C5C);
-  static const darkBlue = Color(0xFF0B6EFE);
+  static const darkBlue = Color.fromARGB(255, 158, 207, 230);
   static const hijauGelap = Color(0xFF6DC1B4);
   static const putihCerah = Color(0xFFFFFFFF);
 }

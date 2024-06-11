@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:project_uas/home_screen.dart';
-import 'package:project_uas/register_screen.dart';
-import 'package:project_uas/style.dart';
-import 'package:project_uas/widget/custom_textfield.dart';
+import 'package:Pharalert/home_screen.dart';
+import 'package:Pharalert/register_screen.dart';
+import 'package:Pharalert/style.dart';
+import 'package:Pharalert/widget/custom_textfield.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
