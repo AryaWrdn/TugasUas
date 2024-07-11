@@ -5,7 +5,7 @@ import 'package:Pharalert/beranda.dart';
 import 'package:Pharalert/setting.dart';
 import 'package:Pharalert/style.dart';
 import 'home_content.dart';
-import 'home_bloc.dart'; // Impor BLoC
+import 'home_bloc.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);

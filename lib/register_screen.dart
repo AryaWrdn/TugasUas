@@ -97,7 +97,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       controller: paswordControler,
                       textInputType: TextInputType.visiblePassword,
                       textInputAction: TextInputAction.done,
-                      hint: 'Ulangi Password',
+                      hint: 'Password',
                       isObscure: isObscure,
                       haSuffix: true,
                       onPressed: () {
